@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lets Talk About Your Project</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "x2toibikiAb8sw8AA",
+      });
+   })();
+</script>
+
+</head>
+<style>
+    .heading{
+        text-align: center;
+        padding-top: 50px;
+    }
+    .contact{
+        text-align: center;
+     
+
+    }.button-one{
+    width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    border-radius: 5px;
+    background:red;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+    color: white;
+   }
+   
+   .button-one{
+    box-shadow: 7px 5px 56px -14px red;
+   }
+   
+   .button.one{
+    transform: scale(0.97);
+    box-shadow: 7px 5px 56px -10px red;
+   }.button-one:hover{
+    width: 110px;
+    height: 40px;
+    background-color: white;
+    color: black;
+   }.button-one:active{
+    background-color: black;
+   }
+</style>
+
+
+
+
+<body style="background-color: black; color: white;">
+    <div class="contact">
+        <h1 class="heading">Let's Talk <br>About Your Project</h1>
+        <div style="display: flex;padding-left: 300px;">
+            <div>
+                <label>First Name : </label>
+                <input type="text" id="fName" style="width: 250px; height: 30px;" placeholder="Your Name"><br>
+            </div>
+            <div>
+                <label>Email Address : </label>
+                <input type="email" id="email" style="width: 250px; height: 30px;padding-left:  49px;" placeholder="Email Adress"><br>
+    
+            </div>
+        </div>
+
+
+
+
+        <br><label for="">Message : </label><br>
+        <textarea rows="20" cols="100" id="message" placeholder="Your Thoughts....." ></textarea><br><br>
+        <button class="button-one" onclick="messageSend()">Send</button>
+
+
+    </div>
+
+
+    
+
+
+
+
+
+
+    
+</body>
+
+
+
+<script>
+    function messageSend(){
+        var params={
+            name:document.getElementById('fName').value,
+            email:document.getElementById('email').value,
+            message:document.getElementById('message').value
+        }
+        const serviceId='service_sjujtgv';
+        const templateId='template_najpz3o'
+
+        emailjs.send(serviceId,templateId,params)
+
+        .then(
+            (res) =>{
+                document.getElementById('fName').value=''
+                document.getElementById('email').value=''
+                document.getElementById('message').value=''
+                console.log(res)
+                alert("you have submited succesfully")
+
+            }
+        )
+
+        .catch((err)=>console.log(err))
+    }
+</script>
+</html>
